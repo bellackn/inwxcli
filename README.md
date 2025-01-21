@@ -16,6 +16,17 @@ $ inwxcli --username foo --password bar --format '{resData[domain][0][status]}' 
 used
 ```
 
+To use `jq` to format the output, you need to replace single quotes with double
+quotes first.
+
+```
+inwxcli --username foo --password bar --format domain.check domain=example.com | tr "'" '"' | jq '.'
+{
+    "code": 1000,
+    [...]
+}
+```
+
 ## API reference
 
 A complete list of API methods is available at
